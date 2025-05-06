@@ -5,11 +5,13 @@ import org.junit.jupiter.api.*;
 public class ScientificCalculatorTest {
     ScientificCalculator calc;
 
+    // ------------ SETTING UP ------------
     @BeforeEach
     public void setUp() {
         calc = new ScientificCalculator();
     }
 
+    // ------------ FUNÇÕES BÁSICAS ------------
     @Test
     void add_doisNumerosPositivos_retornaSomaCorreta() {
         //ARRANGE
@@ -56,31 +58,6 @@ public class ScientificCalculatorTest {
     }
 
     @Test
-    public void squareRoot_numeroNegativo_throwsIllegalArgumentException() {
-        //arrange
-        double a = -10;
-        //act
-
-        //assert
-        Assertions.assertThrows(IllegalArgumentException.class, () ->
-                calc.squareRoot(a), "Exceção lançada!"
-        );
-    }
-
-    @Test
-    public void testDivideByZero() {
-        //arrange
-        double a = 10;
-        double b = 0;
-        //act
-
-        //assert
-        Assertions.assertThrows(IllegalArgumentException.class, () ->
-                calc.divide(a, b), "Argumento inválido"
-        );
-    }
-
-    @Test
     public void testLog() {
         //arrange
         double a = 5;
@@ -103,5 +80,31 @@ public class ScientificCalculatorTest {
 
         //assert
         Assertions.assertEquals(expected, resultado);
+    }
+
+    //------------ FUNÇÕES QUE RETORNAM EXCEPTION ------------
+    @Test
+    public void squareRoot_numeroNegativo_throwsIllegalArgumentException() {
+        //arrange
+        double a = -10;
+        //act
+
+        //assert
+        Assertions.assertThrows(IllegalArgumentException.class, () ->
+                calc.squareRoot(a), "Exceção lançada!"
+        );
+    }
+
+    @Test
+    public void testDivideByZero() {
+        //arrange
+        double a = 10;
+        double b = 0;
+        //act
+
+        //assert
+        Assertions.assertThrows(IllegalArgumentException.class, () ->
+                calc.divide(a, b), "Argumento inválido"
+        );
     }
 }
